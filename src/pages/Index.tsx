@@ -40,10 +40,14 @@ export default function Index() {
       </header>
 
       <main>
-        <section id="home" className="py-20 md:py-32">
-          <div className="container mx-auto px-4">
+        <section id="home" className="py-20 md:py-32 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 pointer-events-none" />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1s' }} />
+          
+          <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
+              <div className="space-y-6 animate-fade-in-up">
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
                   Автоматизация бизнеса через Telegram боты
                 </h1>
@@ -51,37 +55,39 @@ export default function Index() {
                   YAPPERTAR AI — платформа для создания интеллектуальных чат-ботов, которые автоматизируют ваши бизнес-процессы и повышают эффективность команды
                 </p>
                 <div className="flex gap-4">
-                  <Button size="lg" className="text-base">
+                  <Button size="lg" className="text-base animate-scale-in hover:scale-105 transition-transform">
                     <Icon name="Rocket" size={20} className="mr-2" />
                     Попробовать бесплатно
                   </Button>
-                  <Button size="lg" variant="outline" className="text-base">
+                  <Button size="lg" variant="outline" className="text-base animate-scale-in hover:scale-105 transition-transform" style={{ animationDelay: '0.2s' }}>
                     <Icon name="Play" size={20} className="mr-2" />
                     Демо
                   </Button>
                 </div>
               </div>
-              <div className="relative">
+              <div className="relative animate-slide-in-right">
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur-2xl animate-pulse-glow" />
                 <img 
                   src="https://cdn.poehali.dev/projects/1f059fb6-ca3c-44c0-97b6-9f7d4654ae03/files/f0ab6295-5e28-4fff-8000-a04d0c082a59.jpg" 
                   alt="YAPPERTAR AI Platform"
-                  className="rounded-lg shadow-2xl"
+                  className="rounded-lg shadow-2xl relative z-10 animate-float"
                 />
               </div>
             </div>
           </div>
         </section>
 
-        <section id="features" className="py-20 bg-muted/30">
+        <section id="features" className="py-20 bg-muted/30 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 animate-fade-in">
               <h2 className="text-3xl md:text-5xl font-bold mb-4">Возможности платформы</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Полный набор инструментов для создания и управления чат-ботами
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="border-2 hover:border-primary transition-colors">
+              <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                     <Icon name="Zap" size={24} className="text-primary" />
@@ -93,7 +99,7 @@ export default function Index() {
                 </CardHeader>
               </Card>
 
-              <Card className="border-2 hover:border-primary transition-colors">
+              <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                     <Icon name="Brain" size={24} className="text-primary" />
@@ -105,7 +111,7 @@ export default function Index() {
                 </CardHeader>
               </Card>
 
-              <Card className="border-2 hover:border-primary transition-colors">
+              <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                     <Icon name="BarChart3" size={24} className="text-primary" />
@@ -117,7 +123,7 @@ export default function Index() {
                 </CardHeader>
               </Card>
 
-              <Card className="border-2 hover:border-primary transition-colors">
+              <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                     <Icon name="Workflow" size={24} className="text-primary" />
@@ -129,7 +135,7 @@ export default function Index() {
                 </CardHeader>
               </Card>
 
-              <Card className="border-2 hover:border-primary transition-colors">
+              <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                     <Icon name="Shield" size={24} className="text-primary" />
@@ -141,7 +147,7 @@ export default function Index() {
                 </CardHeader>
               </Card>
 
-              <Card className="border-2 hover:border-primary transition-colors">
+              <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                     <Icon name="Users" size={24} className="text-primary" />
@@ -156,16 +162,17 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="api" className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+        <section id="api" className="py-20 relative">
+          <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-16 animate-fade-in">
               <h2 className="text-3xl md:text-5xl font-bold mb-4">API документация</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Простая интеграция за несколько минут
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <Card>
+              <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{ animationDelay: '0.1s' }}>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Icon name="Code" size={20} />
@@ -187,7 +194,7 @@ export default function Index() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{ animationDelay: '0.2s' }}>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Icon name="Webhook" size={20} />
@@ -210,7 +217,7 @@ export default function Index() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{ animationDelay: '0.3s' }}>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Icon name="Database" size={20} />
@@ -231,7 +238,7 @@ export default function Index() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{ animationDelay: '0.4s' }}>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Icon name="Settings" size={20} />
@@ -252,8 +259,8 @@ const bot = new Yappertar({
                 </CardContent>
               </Card>
             </div>
-            <div className="text-center mt-12">
-              <Button size="lg" variant="outline">
+            <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+              <Button size="lg" variant="outline" className="hover:scale-105 transition-transform">
                 <Icon name="Book" size={20} className="mr-2" />
                 Полная документация
               </Button>
@@ -263,7 +270,7 @@ const bot = new Yappertar({
 
         <section id="faq" className="py-20 bg-muted/30">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 animate-fade-in">
               <h2 className="text-3xl md:text-5xl font-bold mb-4">Вопросы и ответы</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Ответы на часто задаваемые вопросы
@@ -271,7 +278,7 @@ const bot = new Yappertar({
             </div>
             <div className="max-w-3xl mx-auto">
               <Accordion type="single" collapsible className="space-y-4">
-                <AccordionItem value="item-1" className="bg-background border rounded-lg px-6">
+                <AccordionItem value="item-1" className="bg-background border rounded-lg px-6 hover:shadow-md transition-shadow animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
                   <AccordionTrigger className="text-lg font-medium hover:no-underline">
                     Как быстро можно запустить первого бота?
                   </AccordionTrigger>
@@ -280,7 +287,7 @@ const bot = new Yappertar({
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="item-2" className="bg-background border rounded-lg px-6">
+                <AccordionItem value="item-2" className="bg-background border rounded-lg px-6 hover:shadow-md transition-shadow animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                   <AccordionTrigger className="text-lg font-medium hover:no-underline">
                     Нужны ли навыки программирования?
                   </AccordionTrigger>
@@ -289,7 +296,7 @@ const bot = new Yappertar({
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="item-3" className="bg-background border rounded-lg px-6">
+                <AccordionItem value="item-3" className="bg-background border rounded-lg px-6 hover:shadow-md transition-shadow animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
                   <AccordionTrigger className="text-lg font-medium hover:no-underline">
                     Какие интеграции поддерживаются?
                   </AccordionTrigger>
@@ -298,7 +305,7 @@ const bot = new Yappertar({
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="item-4" className="bg-background border rounded-lg px-6">
+                <AccordionItem value="item-4" className="bg-background border rounded-lg px-6 hover:shadow-md transition-shadow animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
                   <AccordionTrigger className="text-lg font-medium hover:no-underline">
                     Как работает ИИ-ассистент?
                   </AccordionTrigger>
@@ -307,7 +314,7 @@ const bot = new Yappertar({
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="item-5" className="bg-background border rounded-lg px-6">
+                <AccordionItem value="item-5" className="bg-background border rounded-lg px-6 hover:shadow-md transition-shadow animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
                   <AccordionTrigger className="text-lg font-medium hover:no-underline">
                     Есть ли ограничения по количеству пользователей?
                   </AccordionTrigger>
@@ -316,7 +323,7 @@ const bot = new Yappertar({
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="item-6" className="bg-background border rounded-lg px-6">
+                <AccordionItem value="item-6" className="bg-background border rounded-lg px-6 hover:shadow-md transition-shadow animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
                   <AccordionTrigger className="text-lg font-medium hover:no-underline">
                     Как защищены данные пользователей?
                   </AccordionTrigger>
@@ -329,17 +336,18 @@ const bot = new Yappertar({
           </div>
         </section>
 
-        <section id="contacts" className="py-20">
-          <div className="container mx-auto px-4">
+        <section id="contacts" className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent" />
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
+              <div className="text-center mb-12 animate-fade-in">
                 <h2 className="text-3xl md:text-5xl font-bold mb-4">Свяжитесь с нами</h2>
                 <p className="text-xl text-muted-foreground">
                   Готовы начать? Напишите нам для консультации
                 </p>
               </div>
               <div className="grid md:grid-cols-3 gap-8">
-                <Card className="text-center">
+                <Card className="text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.1s' }}>
                   <CardHeader>
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                       <Icon name="Mail" size={24} className="text-primary" />
@@ -351,7 +359,7 @@ const bot = new Yappertar({
                   </CardHeader>
                 </Card>
 
-                <Card className="text-center">
+                <Card className="text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.2s' }}>
                   <CardHeader>
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                       <Icon name="MessageCircle" size={24} className="text-primary" />
@@ -363,7 +371,7 @@ const bot = new Yappertar({
                   </CardHeader>
                 </Card>
 
-                <Card className="text-center">
+                <Card className="text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.3s' }}>
                   <CardHeader>
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                       <Icon name="Phone" size={24} className="text-primary" />
@@ -375,8 +383,8 @@ const bot = new Yappertar({
                   </CardHeader>
                 </Card>
               </div>
-              <div className="mt-12 text-center">
-                <Button size="lg" className="text-base">
+              <div className="mt-12 text-center animate-fade-in" style={{ animationDelay: '0.5s' }}>
+                <Button size="lg" className="text-base hover:scale-105 transition-transform animate-pulse-glow">
                   <Icon name="Send" size={20} className="mr-2" />
                   Заказать демонстрацию
                 </Button>
@@ -388,22 +396,22 @@ const bot = new Yappertar({
 
       <footer className="border-t py-12 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 animate-fade-in">
             <div className="flex items-center gap-2">
-              <Icon name="Bot" size={24} className="text-primary" />
+              <Icon name="Bot" size={24} className="text-primary animate-float" />
               <span className="font-bold">YAPPERTAR AI</span>
             </div>
             <p className="text-sm text-muted-foreground">
               © 2025 YAPPERTAR AI. Все права защищены.
             </p>
             <div className="flex gap-4">
-              <button className="text-muted-foreground hover:text-primary transition-colors">
+              <button className="text-muted-foreground hover:text-primary hover:scale-110 transition-all">
                 <Icon name="Github" size={20} />
               </button>
-              <button className="text-muted-foreground hover:text-primary transition-colors">
+              <button className="text-muted-foreground hover:text-primary hover:scale-110 transition-all">
                 <Icon name="Linkedin" size={20} />
               </button>
-              <button className="text-muted-foreground hover:text-primary transition-colors">
+              <button className="text-muted-foreground hover:text-primary hover:scale-110 transition-all">
                 <Icon name="Twitter" size={20} />
               </button>
             </div>
