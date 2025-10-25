@@ -35,7 +35,9 @@ export default function Index() {
               Контакты
             </button>
           </nav>
-          <Button>Начать</Button>
+          <a href="#contacts">
+            <Button onClick={() => scrollToSection('contacts')}>Начать</Button>
+          </a>
         </div>
       </header>
 
@@ -55,14 +57,18 @@ export default function Index() {
                   YAPPERTAR AI — платформа для создания интеллектуальных чат-ботов, которые автоматизируют ваши бизнес-процессы и повышают эффективность команды
                 </p>
                 <div className="flex gap-4">
-                  <Button size="lg" className="text-base animate-scale-in hover:scale-105 transition-transform">
-                    <Icon name="Rocket" size={20} className="mr-2" />
-                    Попробовать бесплатно
-                  </Button>
-                  <Button size="lg" variant="outline" className="text-base animate-scale-in hover:scale-105 transition-transform" style={{ animationDelay: '0.2s' }}>
-                    <Icon name="Play" size={20} className="mr-2" />
-                    Демо
-                  </Button>
+                  <a href="https://t.me/FantomProject_support_bot" target="_blank" rel="noopener noreferrer">
+                    <Button size="lg" className="text-base animate-scale-in hover:scale-105 transition-transform">
+                      <Icon name="Rocket" size={20} className="mr-2" />
+                      Попробовать бесплатно
+                    </Button>
+                  </a>
+                  <a href="mailto:fantomproject@internet.ru">
+                    <Button size="lg" variant="outline" className="text-base animate-scale-in hover:scale-105 transition-transform" style={{ animationDelay: '0.2s' }}>
+                      <Icon name="Play" size={20} className="mr-2" />
+                      Демо
+                    </Button>
+                  </a>
                 </div>
               </div>
               <div className="relative animate-slide-in-right">
@@ -346,7 +352,7 @@ const bot = new Yappertar({
                   Готовы начать? Напишите нам для консультации
                 </p>
               </div>
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
                 <Card className="text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.1s' }}>
                   <CardHeader>
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
@@ -354,7 +360,9 @@ const bot = new Yappertar({
                     </div>
                     <CardTitle className="text-lg">Email</CardTitle>
                     <CardDescription className="text-base">
-                      hello@yappertar.ai
+                      <a href="mailto:fantomproject@internet.ru" className="hover:text-primary transition-colors">
+                        fantomproject@internet.ru
+                      </a>
                     </CardDescription>
                   </CardHeader>
                 </Card>
@@ -366,28 +374,20 @@ const bot = new Yappertar({
                     </div>
                     <CardTitle className="text-lg">Telegram</CardTitle>
                     <CardDescription className="text-base">
-                      @yappertar_support
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-
-                <Card className="text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.3s' }}>
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                      <Icon name="Phone" size={24} className="text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">Телефон</CardTitle>
-                    <CardDescription className="text-base">
-                      +7 (495) 123-45-67
+                      <a href="https://t.me/FantomProject_support_bot" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        @FantomProject_support_bot
+                      </a>
                     </CardDescription>
                   </CardHeader>
                 </Card>
               </div>
               <div className="mt-12 text-center animate-fade-in" style={{ animationDelay: '0.5s' }}>
-                <Button size="lg" className="text-base hover:scale-105 transition-transform animate-pulse-glow">
-                  <Icon name="Send" size={20} className="mr-2" />
-                  Заказать демонстрацию
-                </Button>
+                <a href="mailto:fantomproject@internet.ru">
+                  <Button size="lg" className="text-base hover:scale-105 transition-transform animate-pulse-glow">
+                    <Icon name="Send" size={20} className="mr-2" />
+                    Заказать демонстрацию
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
@@ -405,15 +405,12 @@ const bot = new Yappertar({
               © 2025 YAPPERTAR AI. Все права защищены.
             </p>
             <div className="flex gap-4">
-              <button className="text-muted-foreground hover:text-primary hover:scale-110 transition-all">
-                <Icon name="Github" size={20} />
-              </button>
-              <button className="text-muted-foreground hover:text-primary hover:scale-110 transition-all">
-                <Icon name="Linkedin" size={20} />
-              </button>
-              <button className="text-muted-foreground hover:text-primary hover:scale-110 transition-all">
-                <Icon name="Twitter" size={20} />
-              </button>
+              <a href="mailto:fantomproject@internet.ru" className="text-muted-foreground hover:text-primary hover:scale-110 transition-all">
+                <Icon name="Mail" size={20} />
+              </a>
+              <a href="https://t.me/FantomProject_support_bot" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary hover:scale-110 transition-all">
+                <Icon name="MessageCircle" size={20} />
+              </a>
             </div>
           </div>
         </div>
