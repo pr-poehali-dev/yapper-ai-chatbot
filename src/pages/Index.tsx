@@ -3,8 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Icon from '@/components/ui/icon';
+import AuthForm from '@/components/auth/AuthForm';
 
 export default function Index() {
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -35,9 +38,7 @@ export default function Index() {
               Контакты
             </button>
           </nav>
-          <a href="#contacts">
-            <Button onClick={() => scrollToSection('contacts')}>Начать</Button>
-          </a>
+          <Button onClick={() => setShowAuthModal(true)}>Войти</Button>
         </div>
       </header>
 
@@ -415,6 +416,20 @@ const bot = new Yappertar({
           </div>
         </div>
       </footer>
+
+      {showAuthModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+          <div className="relative w-full max-w-md">
+            <button
+              onClick={() => setShowAuthModal(false)}
+              className="absolute -top-4 -right-4 z-10 w-10 h-10 rounded-full bg-background border-2 flex items-center justify-center hover:bg-muted transition-colors"
+            >
+              <Icon name="X" size={20} />
+            </button>
+            <AuthForm onClose={() => setShowAuthModal(false)} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
