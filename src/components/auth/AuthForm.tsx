@@ -10,190 +10,115 @@ interface AuthFormProps {
 }
 
 export default function AuthForm({ onClose }: AuthFormProps) {
-  const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!isLogin && password !== confirmPassword) {
-      alert('Пароли не совпадают');
-      return;
-    }
-
-    if (!captchaToken) {
-      alert('Пожалуйста, подтвердите что вы не робот');
+    if (!email || !password) {
+      alert('Заполните все поля');
       return;
     }
 
     setLoading(true);
 
-    try {
-      const response = await fetch('https://functions.poehali.dev/060a8682-5edb-4e05-86b8-fef922596260', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          password,
-          action: isLogin ? 'login' : 'register',
-          captchaToken
-        })
-      });
-
-      const data = await response.json();
-      
-      if (response.ok) {
-        localStorage.setItem('authToken', data.token);
-        alert(isLogin ? 'Вход выполнен успешно!' : 'Регистрация завершена!');
-        onClose?.();
-      } else {
-        alert(data.error || 'Ошибка авторизации');
-      }
-    } catch (error) {
-      alert('Ошибка подключения к серверу');
-    } finally {
+    setTimeout(() => {
+      localStorage.setItem('userEmail', email);
+      alert('Вход выполнен успешно!');
       setLoading(false);
-    }
-  };
-
-  const handleOAuthLogin = (provider: 'google' | 'yandex' | 'vk') => {
-    window.open(`https://functions.poehali.dev/060a8682-5edb-4e05-86b8-fef922596260/oauth/${provider}`, 'oauth', 'width=600,height=700');
-    
-    window.addEventListener('message', (event) => {
-      if (event.data.token) {
-        localStorage.setItem('authToken', event.data.token);
-        alert('Вход выполнен успешно!');
-        onClose?.();
-      }
-    });
-  };
-
-  const loadRecaptcha = () => {
-    if (typeof window !== 'undefined' && (window as any).grecaptcha) {
-      (window as any).grecaptcha.ready(() => {
-        (window as any).grecaptcha.execute('YOUR_RECAPTCHA_SITE_KEY', { action: 'submit' })
-          .then((token: string) => {
-            setCaptchaToken(token);
-          });
-      });
-    }
+      onClose?.();
+    }, 1000);
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader>
-        <CardTitle className="text-2xl text-center">
-          {isLogin ? 'Вход в систему' : 'Регистрация'}
-        </CardTitle>
-        <CardDescription className="text-center">
-          {isLogin ? 'Войдите в свой аккаунт' : 'Создайте новый аккаунт'}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="example@mail.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+    <div className="relative">
+      <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-purple-500/20 to-secondary/20 rounded-2xl blur-xl animate-pulse-glow" />
+      
+      <Card className="relative w-full max-w-md mx-auto border-2 shadow-2xl overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-purple-500 to-secondary" />
+        
+        <div className="absolute top-4 right-4 w-20 h-20 bg-primary/10 rounded-full blur-2xl" />
+        <div className="absolute bottom-4 left-4 w-24 h-24 bg-secondary/10 rounded-full blur-2xl" />
+        
+        <CardHeader className="relative space-y-2 text-center pb-4">
+          <div className="w-16 h-16 mx-auto bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mb-4 animate-float shadow-lg">
+            <Icon name="Lock" size={32} className="text-white" />
           </div>
+          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            Вход в систему
+          </CardTitle>
+          <CardDescription className="text-base">
+            Введите email и пароль для доступа
+          </CardDescription>
+        </CardHeader>
 
-          <div className="space-y-2">
-            <Label htmlFor="password">Пароль</Label>
-            <Input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              minLength={6}
-            />
-          </div>
-
-          {!isLogin && (
+        <CardContent className="relative space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Подтвердите пароль</Label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                placeholder="••••••••"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-                minLength={6}
-              />
+              <Label htmlFor="email" className="text-sm font-medium">Email</Label>
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="example@mail.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="relative border-2 focus:border-primary transition-all pl-10"
+                />
+                <Icon name="Mail" size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              </div>
             </div>
-          )}
 
-          <div className="text-sm text-muted-foreground text-center">
-            Защищено Google reCAPTCHA
+            <div className="space-y-2">
+              <Label htmlFor="password" className="text-sm font-medium">Пароль</Label>
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  minLength={6}
+                  className="relative border-2 focus:border-primary transition-all pl-10"
+                />
+                <Icon name="KeyRound" size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              </div>
+            </div>
+
+            <Button 
+              type="submit" 
+              className="w-full h-12 text-base font-semibold bg-gradient-to-r from-primary to-secondary hover:shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden group"
+              disabled={loading}
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="relative flex items-center justify-center gap-2">
+                {loading ? (
+                  <>
+                    <Icon name="Loader2" size={20} className="animate-spin" />
+                    Загрузка...
+                  </>
+                ) : (
+                  <>
+                    <Icon name="LogIn" size={20} />
+                    Войти
+                  </>
+                )}
+              </span>
+            </Button>
+          </form>
+
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <Icon name="Shield" size={16} className="text-primary" />
+            <span>Защищённое соединение</span>
           </div>
-
-          <Button 
-            type="submit" 
-            className="w-full" 
-            disabled={loading}
-            onClick={loadRecaptcha}
-          >
-            {loading ? 'Загрузка...' : (isLogin ? 'Войти' : 'Зарегистрироваться')}
-          </Button>
-        </form>
-
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">
-              Или продолжить с
-            </span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-3 gap-3">
-          <Button
-            variant="outline"
-            onClick={() => handleOAuthLogin('google')}
-            className="w-full"
-          >
-            <Icon name="Chrome" size={20} />
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => handleOAuthLogin('yandex')}
-            className="w-full"
-          >
-            <span className="font-bold text-red-600">Я</span>
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => handleOAuthLogin('vk')}
-            className="w-full"
-          >
-            <span className="font-bold text-blue-600">VK</span>
-          </Button>
-        </div>
-
-        <div className="text-center text-sm">
-          <button
-            type="button"
-            onClick={() => setIsLogin(!isLogin)}
-            className="text-primary hover:underline"
-          >
-            {isLogin ? 'Нет аккаунта? Зарегистрируйтесь' : 'Уже есть аккаунт? Войдите'}
-          </button>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

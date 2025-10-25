@@ -15,8 +15,9 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5" />
+        <div className="container mx-auto flex h-16 items-center justify-between px-4 relative z-10">
           <div className="flex items-center gap-2">
             <Icon name="Bot" size={28} className="text-primary" />
             <span className="text-xl font-bold text-foreground">YAPPERTAR AI</span>
@@ -38,7 +39,13 @@ export default function Index() {
               Контакты
             </button>
           </nav>
-          <Button onClick={() => setShowAuthModal(true)}>Войти</Button>
+          <Button 
+            onClick={() => setShowAuthModal(true)} 
+            className="bg-gradient-to-r from-primary to-secondary hover:shadow-xl hover:scale-105 transition-all"
+          >
+            <Icon name="LogIn" size={18} className="mr-2" />
+            Войти
+          </Button>
         </div>
       </header>
 
@@ -94,9 +101,10 @@ export default function Index() {
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-2 animate-fade-in-up relative overflow-hidden group" style={{ animationDelay: '0.1s' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <CardHeader className="relative">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon name="Zap" size={24} className="text-primary" />
                   </div>
                   <CardTitle>Автоматизация процессов</CardTitle>
@@ -106,9 +114,10 @@ export default function Index() {
                 </CardHeader>
               </Card>
 
-              <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-2 animate-fade-in-up relative overflow-hidden group" style={{ animationDelay: '0.2s' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <CardHeader className="relative">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-secondary/20 to-secondary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon name="Brain" size={24} className="text-primary" />
                   </div>
                   <CardTitle>ИИ-ассистент</CardTitle>
@@ -118,9 +127,10 @@ export default function Index() {
                 </CardHeader>
               </Card>
 
-              <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-2 animate-fade-in-up relative overflow-hidden group" style={{ animationDelay: '0.3s' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <CardHeader className="relative">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500/20 to-purple-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon name="BarChart3" size={24} className="text-primary" />
                   </div>
                   <CardTitle>Аналитика</CardTitle>
@@ -354,9 +364,10 @@ const bot = new Yappertar({
                 </p>
               </div>
               <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-                <Card className="text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.1s' }}>
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <Card className="text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 animate-scale-in relative overflow-hidden group" style={{ animationDelay: '0.1s' }}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <CardHeader className="relative">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all">
                       <Icon name="Mail" size={24} className="text-primary" />
                     </div>
                     <CardTitle className="text-lg">Email</CardTitle>
@@ -368,9 +379,10 @@ const bot = new Yappertar({
                   </CardHeader>
                 </Card>
 
-                <Card className="text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.2s' }}>
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <Card className="text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 animate-scale-in relative overflow-hidden group" style={{ animationDelay: '0.2s' }}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <CardHeader className="relative">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary/20 to-secondary/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all">
                       <Icon name="MessageCircle" size={24} className="text-primary" />
                     </div>
                     <CardTitle className="text-lg">Telegram</CardTitle>
@@ -382,9 +394,12 @@ const bot = new Yappertar({
                   </CardHeader>
                 </Card>
               </div>
-              <div className="mt-12 text-center animate-fade-in" style={{ animationDelay: '0.5s' }}>
+              <div className="mt-12 text-center animate-fade-in relative" style={{ animationDelay: '0.5s' }}>
+                <div className="absolute inset-0 flex justify-center">
+                  <div className="w-64 h-24 bg-primary/20 rounded-full blur-3xl animate-pulse-glow" />
+                </div>
                 <a href="mailto:fantomproject@internet.ru">
-                  <Button size="lg" className="text-base hover:scale-105 transition-transform animate-pulse-glow">
+                  <Button size="lg" className="text-base hover:scale-110 transition-all bg-gradient-to-r from-primary via-purple-500 to-secondary shadow-2xl relative z-10">
                     <Icon name="Send" size={20} className="mr-2" />
                     Заказать демонстрацию
                   </Button>
@@ -418,7 +433,7 @@ const bot = new Yappertar({
       </footer>
 
       {showAuthModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4 animate-fade-in">
           <div className="relative w-full max-w-md">
             <button
               onClick={() => setShowAuthModal(false)}
