@@ -4,8 +4,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Icon from '@/components/ui/icon';
 import AuthForm from '@/components/auth/AuthForm';
+import { useLanguage } from '@/context/LanguageContext';
+import { Link } from 'react-router-dom';
 
 export default function Index() {
+  const { t } = useLanguage();
   const [showAuthModal, setShowAuthModal] = useState(false);
   
   const scrollToSection = (sectionId: string) => {
@@ -24,27 +27,27 @@ export default function Index() {
           </div>
           <nav className="hidden md:flex gap-6">
             <button onClick={() => scrollToSection('home')} className="text-sm font-medium hover:text-primary transition-colors">
-              Главная
+              {t('home')}
             </button>
             <button onClick={() => scrollToSection('features')} className="text-sm font-medium hover:text-primary transition-colors">
-              Возможности
-            </button>
-            <button onClick={() => scrollToSection('api')} className="text-sm font-medium hover:text-primary transition-colors">
-              API документация
+              {t('features')}
             </button>
             <button onClick={() => scrollToSection('faq')} className="text-sm font-medium hover:text-primary transition-colors">
-              Вопросы и ответы
+              {t('faq')}
             </button>
             <button onClick={() => scrollToSection('contacts')} className="text-sm font-medium hover:text-primary transition-colors">
-              Контакты
+              {t('contacts')}
             </button>
+            <Link to="/settings" className="text-sm font-medium hover:text-primary transition-colors">
+              {t('settings')}
+            </Link>
           </nav>
           <Button 
             onClick={() => setShowAuthModal(true)} 
             className="bg-gradient-to-r from-primary to-secondary hover:shadow-xl hover:scale-105 transition-all"
           >
             <Icon name="LogIn" size={18} className="mr-2" />
-            Войти
+            {t('login')}
           </Button>
         </div>
       </header>
@@ -59,22 +62,22 @@ export default function Index() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6 animate-fade-in-up">
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-                  Автоматизация бизнеса через Telegram боты
+                  {t('hero_title')}
                 </h1>
                 <p className="text-xl text-muted-foreground">
-                  YAPPERTAR AI — платформа для создания интеллектуальных чат-ботов, которые автоматизируют ваши бизнес-процессы и повышают эффективность команды
+                  {t('hero_subtitle')}
                 </p>
                 <div className="flex gap-4">
                   <a href="https://t.me/FantomProject_support_bot" target="_blank" rel="noopener noreferrer">
                     <Button size="lg" className="text-base animate-scale-in hover:scale-105 transition-transform">
                       <Icon name="Rocket" size={20} className="mr-2" />
-                      Попробовать бесплатно
+                      {t('get_started')}
                     </Button>
                   </a>
                   <a href="mailto:fantomproject@internet.ru">
                     <Button size="lg" variant="outline" className="text-base animate-scale-in hover:scale-105 transition-transform" style={{ animationDelay: '0.2s' }}>
                       <Icon name="Play" size={20} className="mr-2" />
-                      Демо
+                      {t('watch_demo')}
                     </Button>
                   </a>
                 </div>
@@ -95,9 +98,9 @@ export default function Index() {
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
           <div className="container mx-auto px-4">
             <div className="text-center mb-16 animate-fade-in">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">Возможности платформы</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('features_title')}</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Полный набор инструментов для создания и управления чат-ботами
+                {t('features_subtitle')}
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
@@ -107,9 +110,9 @@ export default function Index() {
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon name="Zap" size={24} className="text-primary" />
                   </div>
-                  <CardTitle>Автоматизация процессов</CardTitle>
+                  <CardTitle>{t('feature1_title')}</CardTitle>
                   <CardDescription>
-                    Настройте автоматические ответы, обработку заявок и маршрутизацию обращений без единой строки кода
+                    {t('feature1_desc')}
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -120,9 +123,9 @@ export default function Index() {
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-secondary/20 to-secondary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon name="Brain" size={24} className="text-primary" />
                   </div>
-                  <CardTitle>ИИ-ассистент</CardTitle>
+                  <CardTitle>{t('feature2_title')}</CardTitle>
                   <CardDescription>
-                    Встроенный искусственный интеллект понимает контекст диалога и отвечает на сложные вопросы клиентов
+                    {t('feature2_desc')}
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -133,9 +136,9 @@ export default function Index() {
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500/20 to-purple-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon name="BarChart3" size={24} className="text-primary" />
                   </div>
-                  <CardTitle>Аналитика</CardTitle>
+                  <CardTitle>{t('feature3_title')}</CardTitle>
                   <CardDescription>
-                    Отслеживайте эффективность ботов, анализируйте диалоги и оптимизируйте бизнес-процессы
+                    {t('feature3_desc')}
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -358,9 +361,9 @@ const bot = new Yappertar({
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12 animate-fade-in">
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">Свяжитесь с нами</h2>
+                <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('contacts_title')}</h2>
                 <p className="text-xl text-muted-foreground">
-                  Готовы начать? Напишите нам для консультации
+                  {t('contacts_subtitle')}
                 </p>
               </div>
               <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
@@ -370,7 +373,7 @@ const bot = new Yappertar({
                     <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all">
                       <Icon name="Mail" size={24} className="text-primary" />
                     </div>
-                    <CardTitle className="text-lg">Email</CardTitle>
+                    <CardTitle className="text-lg">{t('email')}</CardTitle>
                     <CardDescription className="text-base">
                       <a href="mailto:fantomproject@internet.ru" className="hover:text-primary transition-colors">
                         fantomproject@internet.ru
@@ -385,7 +388,7 @@ const bot = new Yappertar({
                     <div className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary/20 to-secondary/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all">
                       <Icon name="MessageCircle" size={24} className="text-primary" />
                     </div>
-                    <CardTitle className="text-lg">Telegram</CardTitle>
+                    <CardTitle className="text-lg">{t('telegram')}</CardTitle>
                     <CardDescription className="text-base">
                       <a href="https://t.me/FantomProject_support_bot" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                         @FantomProject_support_bot
@@ -401,7 +404,7 @@ const bot = new Yappertar({
                 <a href="mailto:fantomproject@internet.ru">
                   <Button size="lg" className="text-base hover:scale-110 transition-all bg-gradient-to-r from-primary via-purple-500 to-secondary shadow-2xl relative z-10">
                     <Icon name="Send" size={20} className="mr-2" />
-                    Заказать демонстрацию
+                    {t('request_demo')}
                   </Button>
                 </a>
               </div>
